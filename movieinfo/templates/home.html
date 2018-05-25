@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<br>
+<form class="container form-inline" method="POST" style="margin-left:95px">
+    {{ form.hidden_tag() }}
+  <div class="form-group mx-sm-3 mb-2">
+    {{ form.moviename(class="form-control form-control-lg") }}
+  </div>
+  <input type="submit" value="Search">
+</form>
+ <div class="container">
+ {% if movie_list %}
+ {% for movie in movie_list %}
+  <div class="row" style="height: 280px; margin-top: 10px">
+    {% if movie["backdrop_path"] %}
+    <div class="col-sm-4">
+        <a href="{{ movie['backdrop_path'] }}"><img src="{{ movie['backdrop_path'] }}" class="img-thumbnail" style="height: 100%;
+        overflow: hidden;
+        background-repeat: no-repeat;"></a>
+    </div>
+    {% else %}
+    <div class="col-sm-4">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjXRiOFLsVrPnrkobAQ7nYxhzYMyxIBHW3TaEi4XSdkM7oKGqI" class="img-thumbnail" style="
+        height: 100%;
+        display: block;
+        margin:auto;
+        background-position: center center;
+        background-repeat: no-repeat;">
+    </div>
+    {% endif %}
+    <div class='col-sm-8' style="overflow: auto">
+        <h1>{{ movie['title'] }}</h1>
+        <p>{{ movie['overview'] }}</p>
+        <h6>Release date: {{ movie['release_date'] }}</h6>
+    </div>
+</div>
+{% endfor %}
+  </div>
+ {% else %}
+    <h1>search your movie</h1>
+ {% endif %}
+</div>
+<br>
+{% endblock content%}
