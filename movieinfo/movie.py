@@ -1,9 +1,9 @@
 import requests
 import json
 
-
+api_key=" "
 def movie_db(movie_name="avengers"):
-    url = requests.get("https://api.themoviedb.org/3/search/movie?&api_key=1b5adf76a72a13bad99b8fc0c68cb085&query=" + movie_name)
+    url = requests.get("https://api.themoviedb.org/3/search/movie?&api_key=" + api_key +"&query=" + movie_name)
 
     f_json = url.json()
     """   print(type(f_json["results"]))
